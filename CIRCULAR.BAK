@@ -1,0 +1,154 @@
+#include<conio.h>
+#include<stdio.h>
+#include<stdlib.h>
+#define n 5
+void insert(int[],int);
+void delet(int[]);
+void display(int[]);
+int front = -1;
+int rear = -1;
+void main()
+{
+	int x,ch;
+	int queue[n];
+	clrscr();
+	do
+	{
+		printf("Enter the choice:\n");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:
+				printf("Enter the size of the queue:\n");
+				scanf("%d",&n);
+				insert(queue,n);
+				break;
+			case 2:
+				delet(queue);
+				break;
+			case 3:
+				display(queue);
+				break;
+			case 4:
+				exit(0);
+			default:
+				printf("Invalid option");
+		}
+	 }while(n>=0);
+}
+void insert(int queue[],int x)
+{
+	if((front == 0 && rear == n-1)||(front == rear))
+	{
+		printf("The Queue is full");
+	}
+	else if(rear == -1)
+	{
+		rear++;
+		front++;
+	}
+	else if(rear == n-1 && front > 0)
+	{
+		rear = 0;
+	}
+	else
+	{
+		rear++;
+	}
+	queue[rear]=x;
+}
+void delet(int queue[])
+{
+	if(front == -1)
+	{
+		printf("The queue is empty\n");
+	}
+	else if(rear == front)
+	{
+		printf("\n  %d deleted",queue[front]);
+		rear=-1;
+		front=-1;
+	}
+	else
+	{
+		printf("\n %d deleted",queue[front]);
+		front++;
+	}
+}
+void display(int queue[])
+{
+	int i;
+	if(front>rear)
+	{
+		for( i=0;i<n;i++)
+		{
+			printf("%d",queue[i]);
+		}
+		for(i=0;i<=rear;i++)
+		{
+			printf("%d",queue[i]);
+		}
+	}
+	else
+	{
+		for(i=front;i<=rear;i++)
+		{
+			printf("%d",queue[i]);
+		}
+	}
+}
+
+
+
+Output:
+
+Enter the choice:                                                               
+1                                                                               
+Enter the number:                                                               
+3                                                                               
+                                                                                
+Enter the choice:                                                               
+1                                                                               
+Enter the number:                                                               
+4                                                                               
+                                                                                
+Enter the choice:                                                               
+3                                                                               
+                                                                                
+2       3       4                                                               
+Enter the choice:                                                               
+2                                                                               
+                                                                                
+ 2 deleted                                                                      
+Enter the choice:                                                               
+3                                                                               
+                                                                                
+3       4                                                                       
+Enter the choice:                                                               
+4                                                                               
+                                                                                
+Enter the choice:                                                               
+1                                                                               
+Enter the number:                                                               
+3                                                                               
+                                                                                
+Enter the choice:                                                               
+1                                                                               
+Enter the number:                                                               
+4                                                                               
+                                                                                
+Enter the choice:                                                               
+3                                                                               
+                                                                                
+2       3       4                                                               
+Enter the choice:                                                               
+2                                                                               
+                                                                                
+ 2 deleted                                                                      
+Enter the choice:                                                               
+3                                                                               
+                                                                                
+3       4                                                                       
+Enter the choice:                                                               
+4                                                                               
+                                                                                
